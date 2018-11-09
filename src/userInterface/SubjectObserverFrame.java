@@ -1,32 +1,24 @@
-package userProxy;
+package userInterface;
 
-import future.Future;
-import userGenerateur.Generateur;
-import userGenerateur.ObserverGenrateurAsync;
-import userInterface.Afficheur;
 
-public class Canal implements ObserverGenrateurAsync {
+import javax.swing.JFrame;
 
-	private Generateur generateur;
+public class SubjectObserverFrame extends JFrame{
+	
 	private Afficheur afficheur1;
 	private Afficheur afficheur2;
 	private Afficheur afficheur3;
 	private Afficheur afficheur4;
 	
-	public int getValue() {
-		return this.getGenerateur().getValue();
-	}
-	
-	public Future update() {
-		return null;
-	}
-
-	public Generateur getGenerateur() {
-		return generateur;
-	}
-
-	public void setGenerateur(Generateur generateur) {
-		this.generateur = generateur;
+	public SubjectObserverFrame() {
+		this.afficheur1 = new Afficheur();
+		this.afficheur2 = new Afficheur();
+		this.afficheur3 = new Afficheur();
+		this.afficheur4 = new Afficheur();
+		
+		this.setSize(500, 500);
+				
+		this.setVisible(true);
 	}
 
 	public Afficheur getAfficheur1() {
@@ -60,6 +52,6 @@ public class Canal implements ObserverGenrateurAsync {
 	public void setAfficheur4(Afficheur afficheur4) {
 		this.afficheur4 = afficheur4;
 	}
-
-
+	
+	
 }
