@@ -1,26 +1,31 @@
 package userProxy;
 
-import future.Future;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import userGenerateur.Generateur;
-import userGenerateur.ObserverGenrateurAsync;
 import userInterface.Afficheur;
 
-public class Canal implements ObserverGenrateurAsync {
+public class Canal implements ObserverGenerateurAsync, GenerateurAsync {
 
 	private Generateur generateur;
-	private Afficheur afficheur1;
-	private Afficheur afficheur2;
-	private Afficheur afficheur3;
-	private Afficheur afficheur4;
+	private Afficheur afficheur;
+	private ScheduledExecutorService scheduledES; 
 	
-	public int getValue() {
-		return this.getGenerateur().getValue();
-	}
 	
-	public Future update() {
+	public Future getValue() {
 		return null;
 	}
-
+	
+	@Override
+	public Future update(Generateur g) {
+		Callable mi = new Update();
+		Future f = (Future) scheduledES.schedule(mi, 700, TimeUnit.MILLISECONDS);
+		return f;			
+	}
+	
 	public Generateur getGenerateur() {
 		return generateur;
 	}
@@ -29,37 +34,23 @@ public class Canal implements ObserverGenrateurAsync {
 		this.generateur = generateur;
 	}
 
-	public Afficheur getAfficheur1() {
-		return afficheur1;
+	public Afficheur getAfficheur() {
+		return afficheur;
 	}
 
-	public void setAfficheur1(Afficheur afficheur1) {
-		this.afficheur1 = afficheur1;
+	public ScheduledExecutorService getScheduledESI() {
+		return scheduledES;
 	}
 
-	public Afficheur getAfficheur2() {
-		return afficheur2;
+	public void setScheduledESI(ScheduledExecutorService scheduledES) {
+		this.scheduledES = scheduledES;
 	}
 
-	public void setAfficheur2(Afficheur afficheur2) {
-		this.afficheur2 = afficheur2;
+	public void setAfficheur(Afficheur afficheur) {
+		this.afficheur = afficheur;
 	}
+	
+	
 
-	public Afficheur getAfficheur3() {
-		return afficheur3;
-	}
-
-	public void setAfficheur3(Afficheur afficheur3) {
-		this.afficheur3 = afficheur3;
-	}
-
-	public Afficheur getAfficheur4() {
-		return afficheur4;
-	}
-
-	public void setAfficheur4(Afficheur afficheur4) {
-		this.afficheur4 = afficheur4;
-	}
-
-
+	
 }

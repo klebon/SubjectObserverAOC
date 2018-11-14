@@ -1,6 +1,5 @@
 package main;
 
-import userInterface.SubjectObserverFrame;
 
 public class Main {
 
