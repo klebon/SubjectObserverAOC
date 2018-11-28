@@ -10,7 +10,6 @@ public class DiffusionAtomique implements AlgoDiffusion{
 	
 	@Override
 	public Future execute(Generateur g) {
-		canal.update(g);
 		return canal.update(g);
 	}
 
