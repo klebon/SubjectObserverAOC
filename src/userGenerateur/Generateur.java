@@ -1,11 +1,11 @@
 package userGenerateur;
 
-import userProxy.Canal;
+import java.util.concurrent.Future;
+
 
 public class Generateur extends Thread{
 	
 	private int value;
-	private Canal canal;
 	private AlgoDiffusion algoDiffusion;
 	
 	public Generateur() {
@@ -20,20 +20,8 @@ public class Generateur extends Thread{
 		this.value = value;
 	}
 	
-	public void execute() {
-		algoDiffusion.execute(this);
-	}
-
-	public Canal getCanal() {
-		return canal;
-	}
-
-	public void setCanal(Canal canal) {
-		this.canal = canal;
-	}
-	
 	public void run() {
-		
+		Future f = algoDiffusion.execute(this);
 	}
 
 	public AlgoDiffusion getAlgoDiffusion() {

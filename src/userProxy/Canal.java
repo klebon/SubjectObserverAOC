@@ -14,16 +14,28 @@ public class Canal implements ObserverGenerateurAsync, GenerateurAsync {
 	private Afficheur afficheur;
 	private ScheduledExecutorService scheduledES; 
 	
-	
-	public Future getValue() {
-		return null;
+	@Override
+	public Future update(Generateur g) {
+		Callable u = new Update();
+		Future f = (Future) scheduledES.schedule(u, 700, TimeUnit.MILLISECONDS);
+		try{
+			f = (Future) u.call();
+		}catch(Exception e) {
+			
+		}
+		return f;
 	}
 	
 	@Override
-	public Future update(Generateur g) {
-		Callable mi = new Update();
-		Future f = (Future) scheduledES.schedule(mi, 700, TimeUnit.MILLISECONDS);
-		return f;			
+	public Future getValue() {
+		Callable gv = new GetValue();
+		Future f2 = (Future) scheduledES.schedule(gv, 700, TimeUnit.MILLISECONDS);
+		try{
+			f2 = (Future) gv.call();
+		}catch(Exception e) {
+			
+		}
+		return f2;
 	}
 	
 	public Generateur getGenerateur() {
