@@ -16,10 +16,15 @@ public class Canal implements ObserverGenerateurAsync, GenerateurAsync {
 	
 	@Override
 	public Future update(Generateur g) {
-		Callable u = new Update();
+		
+		Update u = new Update();
+		u.setA(afficheur);
+		
 		Future f = (Future) scheduledES.schedule(u, 700, TimeUnit.MILLISECONDS);
 		try{
+			u.setG(new Generateur(generateur));
 			f = (Future) u.call();
+			System.out.println("canal -> update : "+f.get().toString());
 		}catch(Exception e) {
 			
 		}
@@ -28,12 +33,16 @@ public class Canal implements ObserverGenerateurAsync, GenerateurAsync {
 	
 	@Override
 	public Future getValue() {
-		Callable gv = new GetValue();
+		GetValue gv = new GetValue();
+		gv.setG(generateur);
+		System.out.println("appel getvalue");
+
 		Future f2 = (Future) scheduledES.schedule(gv, 700, TimeUnit.MILLISECONDS);
 		try{
-			f2 = (Future) gv.call();
+			f2 = scheduledES.submit(gv);
+			System.out.println("canal -> getvalue : "+Integer.parseInt(f2.get().toString()));
 		}catch(Exception e) {
-			
+			System.out.println(e);
 		}
 		return f2;
 	}

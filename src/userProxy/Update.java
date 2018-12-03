@@ -1,11 +1,14 @@
 package userProxy;
 
 import java.util.concurrent.Callable;
+
+import userGenerateur.Generateur;
 import userInterface.Afficheur;
 
 public class Update implements Callable {
 
 	private Afficheur a;
+	private Generateur g;
 	
 	public Afficheur getA() {
 		return a;
@@ -15,8 +18,19 @@ public class Update implements Callable {
 		this.a = a;
 	}
 
-	@Override
 	public Object call() throws Exception {
-		return a.update();
-	}	
+		return a.update(g);
+	}
+
+	public Generateur getG() {
+		return g;
+	}
+
+	public void setG(Generateur g) {
+		this.g = g;
+	}
+	
+	
+
+
 }
