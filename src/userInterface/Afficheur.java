@@ -32,5 +32,9 @@ public class Afficheur extends Thread implements ObserverGenerateur {
 		return canal.getValue();
 	}
 	
+	public void afficherValue() {
+		System.out.println(canal.getValue().toString());
+	}
+	
 	
 }

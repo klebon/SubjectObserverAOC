@@ -7,11 +7,11 @@ public class Update implements Callable {
 
 	private Afficheur a;
 	
-	public Afficheur getA() {
+	public Afficheur getAfficheur() {
 		return a;
 	}
 
-	public void setA(Afficheur a) {
+	public void setAfficheur(Afficheur a) {
 		this.a = a;
 	}
 

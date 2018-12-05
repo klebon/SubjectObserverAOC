@@ -1,5 +1,6 @@
 package main;
 
+import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import userGenerateur.AlgoDiffusion;
@@ -15,9 +16,11 @@ public class Main {
 		g.setValue(20);
 		AlgoDiffusion algDiff = new DiffusionAtomique();
 		g.setAlgoDiffusion(algDiff);
+		ScheduledExecutorService ses = Executors.newScheduledThreadPool(5);
 		Canal c = new Canal();
+		c.setScheduledESI(ses);
 		algDiff.setCanal(c);
-		ScheduledExecutorService ses;//instancier ????
+		
 		try {
 			g.start();
 		}catch(Exception e) {
