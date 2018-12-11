@@ -7,12 +7,12 @@ import java.util.concurrent.Future;
 import userGenerateur.Generateur;
 import userProxy.Canal;
 
-public class Afficheur implements ObserverGenerateur {
+public class Afficheur extends Observable implements ObserverGenerateur {
 	private int value;
 	private Canal canal;
 	
 	public Afficheur() {
-		this.value=-1;
+		this.value=0;
 	}
 
 	public int getValue() {
@@ -21,6 +21,8 @@ public class Afficheur implements ObserverGenerateur {
 
 	public void setValue(int value) {
 		this.value = value;
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public Canal getCanal() {
@@ -35,7 +37,8 @@ public class Afficheur implements ObserverGenerateur {
 	public void update(Observable o, Object arg) {
 		try {
 			value = (int) canal.getValue().get();
-			System.out.println("afficheur : "+value);
+			this.setChanged();
+			this.notifyObservers();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

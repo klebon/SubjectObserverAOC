@@ -17,7 +17,6 @@ public class Canal extends Observable implements ObserverGenerateurAsync {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("canal notified");
 		Update u = new Update();
 		u.setC(this);
 		this.setChanged();

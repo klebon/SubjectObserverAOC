@@ -12,8 +12,8 @@ import userProxy.Canal;
 public class Main {
 
 	public static void main(String[] args) {
-		//SubjectObserverFrame sof = new SubjectObserverFrame();
-		Generateur g = new Generateur();
+		SubjectObserverFrame sof = new SubjectObserverFrame();
+		/*Generateur g = new Generateur();
 		AlgoDiffusion algDiff = new DiffusionAtomique();
 		Canal c = new Canal();
 		ScheduledExecutorService ses = Executors.newScheduledThreadPool(Integer.MAX_VALUE);
@@ -34,7 +34,7 @@ public class Main {
 			g.run();
 		}catch(Exception e) {
 			System.out.println(e);
-		}
+		}*/
 	}
 
 }
