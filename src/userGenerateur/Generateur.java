@@ -1,9 +1,10 @@
 package userGenerateur;
 
+import java.util.Observable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-public class Generateur extends Thread{
+public class Generateur extends Observable {
 	
 	private int value;
 	private AlgoDiffusion algoDiffusion;
@@ -25,13 +26,16 @@ public class Generateur extends Thread{
 	}
 	
 	public void run() {
-		Future f = algoDiffusion.execute(this);
-		try {
-			System.out.println("generateur : "+f.get().toString());
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
+		while(value<10) {
+			try {
+				Thread.sleep(1500);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			value++;
+			this.setChanged();
+			System.out.println("generateur increment");
+			algoDiffusion.execute(this);
 		}
 	}
 

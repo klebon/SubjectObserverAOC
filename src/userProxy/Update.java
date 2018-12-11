@@ -7,30 +7,20 @@ import userInterface.Afficheur;
 
 public class Update implements Callable {
 
-	private Afficheur a;
-	private Generateur g;
-	
-	public Afficheur getA() {
-		return a;
-	}
-
-	public void setA(Afficheur a) {
-		this.a = a;
-	}
+	private Canal c;
 
 	public Object call() throws Exception {
-		return a.update(g);
+		c.notifyObservers();
+		return null;
 	}
 
-	public Generateur getG() {
-		return g;
+	public Canal getC() {
+		return c;
 	}
 
-	public void setG(Generateur g) {
-		this.g = g;
+	public void setC(Canal c) {
+		this.c = c;
 	}
 	
 	
-
-
 }

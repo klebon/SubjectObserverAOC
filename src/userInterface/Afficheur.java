@@ -1,12 +1,13 @@
 package userInterface;
 
+import java.util.Observable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import userGenerateur.Generateur;
 import userProxy.Canal;
 
-public class Afficheur extends Thread implements ObserverGenerateur {
+public class Afficheur implements ObserverGenerateur {
 	private int value;
 	private Canal canal;
 	
@@ -30,22 +31,13 @@ public class Afficheur extends Thread implements ObserverGenerateur {
 		this.canal = canal;
 	}
 
-	public void update(Generateur g) throws InterruptedException, ExecutionException {
-		value = (int) canal.getValue().get();
-	}
-	
-	public void run() {
-		while(true) {
-			try {
-				this.update();
-				System.out.println("afficheur : "+value);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	@Override
+	public void update(Observable o, Object arg) {
+		try {
+			value = (int) canal.getValue().get();
+			System.out.println("afficheur : "+value);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

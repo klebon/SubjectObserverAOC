@@ -1,5 +1,7 @@
 package userInterface;
 
-public interface ObserverGenerateur {
+import java.util.Observer;
+
+public interface ObserverGenerateur extends Observer{
 
 }

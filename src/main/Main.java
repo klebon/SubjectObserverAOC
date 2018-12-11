@@ -14,20 +14,24 @@ public class Main {
 	public static void main(String[] args) {
 		//SubjectObserverFrame sof = new SubjectObserverFrame();
 		Generateur g = new Generateur();
-		g.setValue(20);
 		AlgoDiffusion algDiff = new DiffusionAtomique();
-		g.setAlgoDiffusion(algDiff);
-		ScheduledExecutorService ses = Executors.newScheduledThreadPool(Integer.MAX_VALUE);
 		Canal c = new Canal();
-		c.setScheduledESI(ses);
-		algDiff.setCanal(c);
+		ScheduledExecutorService ses = Executors.newScheduledThreadPool(Integer.MAX_VALUE);
 		Afficheur a = new Afficheur();
+		
+		g.setAlgoDiffusion(algDiff);
+		
+		c.setScheduledESI(ses);
 		c.setAfficheur(a);
-		a.setCanal(c);
 		c.setGenerateur(g);
+		
+		a.setCanal(c);
+		
+		g.addObserver(c);
+		c.addObserver(a);
+		
 		try {
-			g.start();
-			a.start();
+			g.run();
 		}catch(Exception e) {
 			System.out.println(e);
 		}

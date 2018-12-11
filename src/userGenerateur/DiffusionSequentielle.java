@@ -7,15 +7,7 @@ import userProxy.Canal;
 public class DiffusionSequentielle implements AlgoDiffusion{
 
 	@Override
-	public Future execute(Generateur g) {
-		return null;
+	public void execute(Generateur g) {
 		
 	}
-
-	@Override
-	public void setCanal(Canal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
