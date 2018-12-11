@@ -4,23 +4,18 @@ import java.util.concurrent.Callable;
 
 import userGenerateur.Generateur;
 
-public class GetValue implements Callable{
 
-	private Generateur g;
+public class GetValue implements Callable<Integer>{
+
+	private Generateur generateur;
 	
-	public Generateur getG() {
-		return g;
+	public GetValue(Generateur generateur) {
+		super();
+		this.generateur = generateur;
 	}
-
-	public void setG(Generateur g) {
-		this.g = g;
-	}
-
+	
 	@Override
-	public Object call() throws Exception {
-		return g.getValue();
-	}
-
-	
-	
+	public Integer call() throws Exception {
+		return this.generateur.getValue();
+	}	
 }

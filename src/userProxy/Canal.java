@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import userGenerateur.Generateur;
 import userInterface.Afficheur;
 
-public class Canal extends Observable implements ObserverGenerateurAsync, GenerateurAsync {
+public class Canal extends Observable implements ObserverGenerateurAsync {
 
 	private Generateur generateur;
 	private Afficheur afficheur;
@@ -24,11 +24,8 @@ public class Canal extends Observable implements ObserverGenerateurAsync, Genera
 		scheduledES.schedule(u, 700, TimeUnit.MILLISECONDS);
 	}
 	
-	@Override
 	public Future getValue() {
-		GetValue gv = new GetValue();
-		gv.setG(generateur);
-
+		GetValue gv = new GetValue(generateur);
 		return scheduledES.schedule(gv, 700, TimeUnit.MILLISECONDS);
 	}
 	
