@@ -1,6 +1,7 @@
 package userProxy;
 
 import java.util.Observable;
+import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
@@ -13,19 +14,20 @@ public class Canal extends Observable implements ObserverGenerateurAsync {
 
 	private Generateur generateur;
 	private Afficheur afficheur;
-	private ScheduledExecutorService scheduledES; 
+	private ScheduledExecutorService scheduledES;
 	
 	@Override
-	public void update(Observable o, Object arg) {
+	public void update(Observable o, Object arg) {		
 		Update u = new Update();
 		u.setC(this);
 		this.setChanged();
-		scheduledES.schedule(u, 700, TimeUnit.MILLISECONDS);
+		scheduledES.schedule(u, 1000, TimeUnit.MILLISECONDS);
 	}
 	
 	public Future getValue() {
 		GetValue gv = new GetValue(generateur);
-		return scheduledES.schedule(gv, 700, TimeUnit.MILLISECONDS);
+		
+		return scheduledES.schedule(gv, new Random().nextInt(3000), TimeUnit.MILLISECONDS);
 	}
 	
 	public Generateur getGenerateur() {

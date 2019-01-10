@@ -3,16 +3,21 @@ package userGenerateur;
 import java.util.Observable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.Phaser;
 
 public class Generateur extends Observable {
 	
 	private boolean run;
 	private int value;
 	private AlgoDiffusion algoDiffusion;
+	private Phaser ph;
 	
 	public Generateur() {
 		this.run=false;
 		this.value=0;
+		
+		//diffusion atomique
+		setPhaser(new Phaser(4));
 	}
 	
 	public Generateur(Generateur g) {
@@ -38,7 +43,7 @@ public class Generateur extends Observable {
 	public void run() {
 		while(this.isRun()) {
 			try {
-				Thread.sleep(1500);
+				Thread.sleep(100);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -55,5 +60,13 @@ public class Generateur extends Observable {
 
 	public void setAlgoDiffusion(AlgoDiffusion algoDiffusion) {
 		this.algoDiffusion = algoDiffusion;
+	}
+
+	public Phaser getPhaser() {
+		return ph;
+	}
+
+	public void setPhaser(Phaser ph) {
+		this.ph = ph;
 	}
 }

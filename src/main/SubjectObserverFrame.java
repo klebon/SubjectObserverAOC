@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observer;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Phaser;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javax.swing.*;
@@ -172,7 +173,5 @@ public class SubjectObserverFrame extends JFrame {
 		pan.add(reset, bl.PAGE_END);
 		
 		this.add(pan);
-		
-		this.setVisible(true);
 	}
 }
