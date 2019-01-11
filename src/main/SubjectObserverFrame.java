@@ -70,8 +70,9 @@ public class SubjectObserverFrame extends JFrame {
 		c4.addObserver(a4);
 		
 		/*Partie interfaces*/
-		this.setSize(600, 100);
+		this.setSize(600, 65);
 		this.setResizable(false);
+		this.setTitle("Observer parrallèle");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel pan = new JPanel();

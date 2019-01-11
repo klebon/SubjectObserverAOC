@@ -25,7 +25,10 @@ public class DiffusionCausale implements AlgoDiffusion{
 		}
 		originator.setState(g);
 		caretaker.addMemento(originator.save());
-		g.notifyObservers(caretaker.getMemento());
+		if(g.getPhaser().isTerminated()) {
+			g.setPhaser(new Phaser(4));
+			g.notifyObservers(caretaker.getMemento());
+		}
 	}
 
 	public Caretaker getCaretaker() {
