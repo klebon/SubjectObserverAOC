@@ -90,7 +90,7 @@ public class SubjectObserverFrame extends JFrame {
 					//System.out.println("algo : atomique");
 					break;
 				case "Sequentielle" :
-					//g.setAlgoDiffusion(algDiffSequentielle);
+					g.setAlgoDiffusion(algDiffSequentielle);
 					//System.out.println("algo : sequentiel");
 					break;
 				case "Causale" :

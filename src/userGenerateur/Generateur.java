@@ -15,9 +15,6 @@ public class Generateur extends Observable {
 	public Generateur() {
 		this.run=false;
 		this.value=0;
-		
-		//diffusion atomique
-		setPhaser(new Phaser(4));
 	}
 	
 	public Generateur(Generateur g) {
@@ -41,15 +38,16 @@ public class Generateur extends Observable {
 	}
 
 	public void run() {
+		this.setPhaser(new Phaser(4));
+		
+		//initialisation diffusion sequentielle
+		if(this.getAlgoDiffusion().getClass().equals(DiffusionSequentielle.class)) {
+			this.getPhaser().forceTermination();
+		}
+		
 		while(this.isRun()) {
-			try {
-				Thread.sleep(100);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
 			value++;
 			this.setChanged();
-			notifyObservers(this.value);
 			algoDiffusion.execute(this);
 		}
 	}
