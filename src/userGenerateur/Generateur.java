@@ -40,8 +40,9 @@ public class Generateur extends Observable {
 	public void run() {
 		this.setPhaser(new Phaser(4));
 		
-		//initialisation diffusion sequentielle
-		if(this.getAlgoDiffusion().getClass().equals(DiffusionSequentielle.class)) {
+		//initialisation diffusion sequentielle et causale
+		if(this.getAlgoDiffusion().getClass().equals(DiffusionSequentielle.class)
+				|| this.getAlgoDiffusion().getClass().equals(DiffusionCausale.class)) {
 			this.getPhaser().forceTermination();
 		}
 		

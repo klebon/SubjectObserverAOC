@@ -87,15 +87,12 @@ public class SubjectObserverFrame extends JFrame {
 				switch((String) jcb.getSelectedItem()){
 				case "Atomique":
 					g.setAlgoDiffusion(algDiffAtomique);
-					//System.out.println("algo : atomique");
 					break;
 				case "Sequentielle" :
 					g.setAlgoDiffusion(algDiffSequentielle);
-					//System.out.println("algo : sequentiel");
 					break;
 				case "Causale" :
-					//g.setAlgoDiffusion(algDiffCausale);
-					//System.out.println("algo : causale");
+					g.setAlgoDiffusion(algDiffCausale);
 					break;		
 				}
 			}

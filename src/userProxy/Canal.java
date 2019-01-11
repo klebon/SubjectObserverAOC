@@ -28,19 +28,19 @@ public class Canal extends Observable implements ObserverGenerateurAsync {
 		Update u = new Update();
 		u.setC(this);
 		this.setChanged();
-		scheduledES.schedule(u, 1000, TimeUnit.MILLISECONDS);
+		scheduledES.schedule(u, new Random().nextInt(3000), TimeUnit.MILLISECONDS);
 	}
 	
 	public Future getValue() {
 		GetValue gv;
-		if(generateurTMP!=null) {//cas sequentiel
+		if(generateurTMP!=null) {//cas sequentiel ou causal
 			gv = new GetValue(generateurTMP);
 		} else {//cas atomique
 			gv = new GetValue(generateur);
 		}
 		this.setGenerateurTMP(null);
 		
-		return scheduledES.schedule(gv, new Random().nextInt(2000), TimeUnit.MILLISECONDS);
+		return scheduledES.schedule(gv, new Random().nextInt(3000), TimeUnit.MILLISECONDS);
 	}
 	
 	public Generateur getGenerateur() {
