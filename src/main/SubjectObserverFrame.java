@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observer;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Phaser;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javax.swing.*;
@@ -20,6 +19,11 @@ import userGenerateur.Generateur;
 import userInterface.Afficheur;
 import userProxy.Canal;
 
+/**
+ * Interface de l'application. Initialise les objects, leurs dépendances et les éléments de l'interface
+ * @author miola, sefacene
+ *
+ */
 public class SubjectObserverFrame extends JFrame {
 
 	public SubjectObserverFrame() {

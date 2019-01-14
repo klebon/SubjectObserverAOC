@@ -1,10 +1,13 @@
 package userGenerateur;
 
 import java.util.Observable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.concurrent.Phaser;
 
+/**
+ * 
+ * @author miola, sefacene
+ *
+ */
 public class Generateur extends Observable {
 	
 	private boolean run;
@@ -37,6 +40,10 @@ public class Generateur extends Observable {
 		this.run = run;
 	}
 
+	/**
+	 * initiatise le générateur, incrémente sa valeur et la diffuse 
+	 * tant que l'utilisateur n'a pas appuyé sur le boutton stop 
+	 */
 	public void run() {
 		this.setPhaser(new Phaser(4));
 		

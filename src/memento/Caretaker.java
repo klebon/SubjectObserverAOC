@@ -2,6 +2,12 @@ package memento;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author miola, sefacene
+ * 
+ * Pattern Memento : rôle Caretaker
+ */
 public class Caretaker {
     private ArrayList<Memento> mementos = new ArrayList<>();
 

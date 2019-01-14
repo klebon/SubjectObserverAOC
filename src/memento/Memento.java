@@ -2,6 +2,12 @@ package memento;
 
 import userGenerateur.Generateur;
 
+/**
+ * 
+ * @author miola, sefacene
+ * 
+ * Pattern Memento, rôle Memento
+ */
 public class Memento {
 	
 	private Generateur state;

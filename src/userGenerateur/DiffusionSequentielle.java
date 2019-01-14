@@ -1,10 +1,12 @@
 package userGenerateur;
 
-import java.util.concurrent.Future;
 import java.util.concurrent.Phaser;
 
-import userProxy.Canal;
-
+/**
+ * 
+ * @author miola, sefacene
+ *
+ */
 public class DiffusionSequentielle implements AlgoDiffusion{
 
 	@Override

@@ -2,9 +2,11 @@ package userProxy;
 
 import java.util.concurrent.Callable;
 
-import userGenerateur.Generateur;
-import userInterface.Afficheur;
-
+/**
+ * 
+ * @author miola, sefacene
+ *
+ */
 public class Update implements Callable {
 
 	private Canal c;

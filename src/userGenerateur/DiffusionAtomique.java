@@ -1,7 +1,10 @@
 package userGenerateur;
 
-import java.util.concurrent.Phaser;
-
+/**
+ * 
+ * @author miola, sefacene
+ * 
+ */
 public class DiffusionAtomique implements AlgoDiffusion{
 	
 	@Override

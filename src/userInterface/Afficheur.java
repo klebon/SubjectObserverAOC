@@ -1,12 +1,13 @@
 package userInterface;
 
 import java.util.Observable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-
-import userGenerateur.Generateur;
 import userProxy.Canal;
 
+/**
+ * 
+ * @author miola, sefacene
+ *
+ */
 public class Afficheur extends Observable implements ObserverGenerateur {
 	private int value;
 	private Canal canal;
@@ -33,6 +34,9 @@ public class Afficheur extends Observable implements ObserverGenerateur {
 		this.canal = canal;
 	}
 
+	/**
+	 * notifie l'AfficheursLabel qu'il peut actualiser sa valeur
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		try {

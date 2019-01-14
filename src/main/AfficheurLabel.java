@@ -7,6 +7,11 @@ import javax.swing.JLabel;
 
 import userInterface.Afficheur;
 
+/**
+ * Classe Label personalisée pour les afficheurs
+ * @author miola, sefacene
+ *
+ */
 public class AfficheurLabel extends JLabel implements Observer {
 	
 	private Afficheur aff;
